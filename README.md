@@ -31,6 +31,11 @@ cd ~/git/Tendon_Robot_Learning/build && python3 learn_actual_pc.py path_to_data_
 The positional arguments are a data file name, a weight file name, and a test dataset (consisting of indices as Numpy array). 
 To train a simulation model, see `learn_tendon_shape.py`.
 
+To get help:
+```
+python3 learn_actual_pc.py -h
+```
+
 ## Data collection conversion
 
 The tendon-driven robot data collection is in the form of Python dictionary where each key and value includes tendon configuration, length configuration, servo commands, and the corresponding robot shape (point clouds). To use the data collection in the model training, you need to convert it to Python list or Numpy array. You can easily do so using Python codes described below:
