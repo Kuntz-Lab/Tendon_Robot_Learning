@@ -1,0 +1,40 @@
+[backbone_specs]                                                                
+  E = 91000000 #1.31e8 #86462550.0 #1.85e6
+  length = 0.2
+  length_discretization = 0.005
+  nu = 0.3
+  ri = 0.0
+  ro = 0.003
+[tendon_robot]
+  enable_retraction = false
+  enable_rotation = false
+  radius = 0.015
+
+[[tendons]]
+  C = [2.0944, 0.0] # 4*pi/6
+  D = [0.008]
+  max_length = 0.04
+  max_tension = 18.875 #16.1 #0.355 
+  min_length = -0.01
+[[tendons]]
+  C = [0.0, 0.0] # 0
+  D = [0.008]
+  max_length = 0.04
+  max_tension = 18.875 #16.1 #0.355 
+  min_length = -0.01
+[[tendons]]
+  C = [-2.0944, 0.0] # -4*pi/6
+  D = [0.008]
+  max_length = 0.04
+  max_tension = 18.875 #16.1 #0.355 
+  min_length = -0.01
+[[tendons]]
+  C = [-2.0944, -47.124] # -4*pi/6
+  D = [0.008]
+  max_length = 0.04
+  max_tension = 16.5 #0.342 
+  min_length = -0.01
+
+[haptic_transform]
+  translation=[0.0,-0.088,0.0]
+  scale=1
