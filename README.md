@@ -1,6 +1,9 @@
 # Learning Forward Kinematics Model For Tendon-Driven Robots 
 This repo is about learning forward kinematics model for tendon-driven robots, accounting for hysteresis.
 
+![alt text](figures/intro.jpg?raw=true)
+
+
 ## Build
 
 ```
