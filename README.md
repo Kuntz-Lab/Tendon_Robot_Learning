@@ -8,6 +8,8 @@ Tendon-driven continuum robots have been gaining popularity in medical applicati
 
 ## Hardware Details
 ![alt text](figures/setup.jpg?raw=true "Title")
+All computation was performed on a computer with an AMD Ryzen 7 3700X 8-core precessor, 64 GB of 3200 Hz DDR4 DRAM, and an NVIDIA GeForce RTX 3060 Ti.
+
 #### Cameras
 Model: Intel RealSense D405 (see: https://github.com/IntelRealSense/realsense-ros)
 
