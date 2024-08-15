@@ -44,16 +44,6 @@ class DeepDecoder(nn.Module):
         self.bn4= nn.GroupNorm(1,1024)
         self.fc5 = nn.Linear(1024,3*self.N)
 
-        #self.fc1 = nn.Linear(4,128)
-        #self.bn1 = nn.GroupNorm(1,128)
-        #self.fc2 = nn.Linear(128,512)
-        #self.bn2 = nn.GroupNorm(1,512)
-        #self.fc3 = nn.Linear(512,1024)
-        #self.bn3 = nn.GroupNorm(1,1024)
-        #self.fc4 = nn.Linear(1024,2048)
-        #self.bn4 = nn.GroupNorm(1,2048)
-        #self.fc5 = nn.Linear(2048,3*self.N)
-
     def forward(self, x):
         x = self.fc1(x)
         x = self.bn1(x)
@@ -182,10 +172,6 @@ def train_model(network, optimizer, train_loader, epoch, hys=False, lossfunc='EC
         loss.backward()
         train_loss += loss.item()
         optimizer.step()
-        #if i % 100 == 0:
-        #    print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.format(
-        #        epoch+1, i * len(sample), len(train_loader.dataset),
-        #        100. * i / len(train_loader), loss.item()))
     print('Current loss function: ', lossfunc)
     print('====> Epoch: {} Average Training Loss: {:.6f}'.format(
               epoch+1, train_loss/num_batch)) 
@@ -237,7 +223,6 @@ def get_data(robot,
             pc = [float(train_samples[i][f'p{j}{c}']) for c in 'xyz' for j in range(1, N+1)]  
             tau = [float(train_samples[i][f't{j+1}']) for j in range(len(robot.tendons))]
             train_dataset.append(tau + pc) 
-        #+ [f'p{i}{c}' for c in 'xyz' for i in range(1, N+1)])
 
         ## Geneate test dataset
         val_idx = np.array([x for x in range(len(commands)) if x not in train_idx])
@@ -261,16 +246,8 @@ def get_data(robot,
             #commands = list(data_dict.values()) 
         print("A list size from pickle file: ", len(commands), len(commands[0]))
 
-        ## Normalize
-        #commands = np.array(commands)
-        #for i in range(len(robot.tendons)):
-        #    commands[:,i] *= 20 / robot.tendons[i].max_tension
-
         with open(test_file, 'rb') as test_case:
             test_idx = pickle.load(test_case)
-
-        #with open('data/fixed_home_30_test_cases.pickle', 'rb') as test_case:
-        #    test_idx = pickle.load(test_case)
 
         idx = np.array([x for x in range(len(commands)) if x not in test_idx])
         num_train = int(training_size * len(idx) / 100)
@@ -280,15 +257,6 @@ def get_data(robot,
         val_idx = np.array([x for x in idx if x not in train_idx])
         val_dataset = list(commands[i] for i in val_idx)
 
-        #num_train = int(training_size * len(commands) / 100)
-        #train_idx = np.random.choice(len(commands), size=num_train, replace=False)
-        #train_dataset = list(commands[i] for i in train_idx)
-
-        #idx = np.array([x for x in range(len(commands)) if x not in train_idx])
-        #test_idx = np.random.choice(idx, size=num_test_samples, replace=False) 
-        #val_idx = np.array([y for y in idx if y not in test_idx])
-
-        #val_dataset = list(commands[i] for i in val_idx)
 
     ## Torchify dataset
     train_dataset = torch.from_numpy(np.array(train_dataset)).float().to(device)
@@ -321,21 +289,16 @@ def main(arguments):
                             N=args.num_data,
                           )
 
-    #test_idx_storage = args.testset
-    #with open(test_idx_storage, 'wb') as ff:
-    #    pickle.dump(list(test_idx), ff)
     train_loader = torch.utils.data.DataLoader(train, batch_size=16, shuffle=True)
     test_loader = torch.utils.data.DataLoader(test, batch_size=16, shuffle=True)
     
     # Network model
     dnn = DeepDecoder(args.num_data, args.hys)
 
-    # Transfer learning from a pretrained model with simulation dataset
     #dnn.load_state_dict(torch.load(model_path))
     dnn.to(device)
     print("====Initializing Model Weights...====\n")
     dnn.apply(weights_init)
-    #print("Model initilized..\n")
 
     optimizer = optim.Adam(dnn.parameters(), lr=0.01)
     scheduler = optim.lr_scheduler.StepLR(optimizer, 50, gamma=0.1)
