@@ -1,0 +1,52 @@
+[backbone_specs]
+  E = 2.1e6
+  length = 0.120
+  length_discretization = 0.00059
+  nu = 0.3
+  ri = 0.0
+  ro = 0.003
+[problem]
+  min_tension_change = 0.005
+  min_rotation_change = 0.0628
+  min_retraction_change = 0.00059
+  start = [0.1, 0.1, 0.1]
+  start_rotation = 3.14
+  start_retraction = 0.06
+  goal  = [3.0, 0.0, 0.0]
+  goal_rotation = 1.5
+  goal_retraction = 0.10
+  sample_like_sphere = true
+[haptic_transform]
+  translation = [-0.0230, -0.0220, 0.0157]
+  scale = 0.5
+[environment]
+  [[environment.meshes]]
+    filename = "env-mesh.stl"
+[voxel_environment]
+  filename = "env-backbone-shell.msgpack"
+  interior_filename = "env-backbone-interior.msgpack"
+  scaling = 0.001
+  translation = [108.9, 165.3, 204.2]
+  rotation_quat = [0.665, -0.052, 0.744, 0.035]
+[tendon_robot]
+  radius = 3e-3
+  enable_rotation = true
+  enable_retraction = true
+[[tendons]]
+  C = [0.0, 0.0]
+  D = [0.0025]
+  max_tension = 3.5
+  min_length = -0.029
+  max_length = 0.048
+[[tendons]]
+  C = [1.571, 50.0]
+  D = [0.0025]
+  max_tension = 3.5
+  min_length = -0.027
+  max_length = 0.046
+[[tendons]]
+  C = [-1.571, -50.0]
+  D = [0.0025]
+  max_tension = 3.5
+  min_length = -0.027
+  max_length = 0.046
