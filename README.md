@@ -2,6 +2,8 @@
 This repo is about learning forward kinematics model for tendon-driven robots, accounting for hysteresis.
 
 ![alt text](figures/intro.jpg?raw=true "Title")
+#### Abstract
+Tendon-driven continuum robots have been gaining popularity in medical applications due to their ability to curve around complex anatomical structures, potentially reducing the invasiveness of surgery. However, accurate modeling is required to plan and control the movements of these flexible robots. Physics-based models have limitations due to unmodeled effects, leading to mismatches between model prediction and actual robot shape. Recently proposed learning-based methods have been shown to overcome some of these limitations but do not account for hysteresis, a significant source of error for these robots. To overcome these challenges, we propose a novel deep decoder neural network that predicts the complete shape of tendon-driven robots using point clouds as the shape representation, conditioned on prior configurations to account for hysteresis. We evaluate our method on a physical tendon-driven robot and show that our network model accurately predicts the robot's shape, significantly outperforming a state-of-the-art physics-based model and a learning-based model that does not account for hysteresis.
 
 
 ## Hardware Details
