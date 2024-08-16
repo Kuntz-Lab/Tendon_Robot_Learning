@@ -50,8 +50,8 @@ For data collection for simulation, see `simulated_data_collection.py` or `pbf_d
 
 ## Inference
 
-Hysteresis quantification: `test_hysteresis_config.py`_
-Physics-based model comparison (Simulation): `test_sim_config.py`_
+Hysteresis quantification: `test_hysteresis_config.py` <br />
+Physics-based model comparison (Simulation): `test_sim_config.py` <br />
 Learned model: `test_config.py`
 
 
