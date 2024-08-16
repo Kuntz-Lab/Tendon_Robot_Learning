@@ -55,3 +55,15 @@ Physics-based model comparison (Simulation): `test_sim_config.py` <br />
 Learned model: `test_config.py`
 
 
+## Citation
+Please cite our paper as:
+```
+@article{cho2024accounting,
+  title={Accounting for Hysteresis in the Forward Kinematics of Nonlinearly-Routed Tendon-Driven Continuum Robots via a Learned Deep Decoder Network},
+  author={Cho, Brian Y and Esser, Daniel S and Thompson, Jordan and Thach, Bao and Webster III, Robert J and Kuntz, Alan},
+  journal={arXiv preprint arXiv:2404.03816},
+  year={2024}
+}
+```
+Note: this paper has been accepted for IEEE Robotics and Automation Letters (RAL2024).
+
