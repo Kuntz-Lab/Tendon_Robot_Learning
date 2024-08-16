@@ -42,9 +42,9 @@ python3 learn_actual_pc.py -h
 
 ## Data collection conversion
 
-The tendon-driven robot data collection is in the form of Python dictionary where each key and value includes tendon configuration, length configuration, servo commands, and the corresponding robot shape (point clouds). To use the data collection in the model training, you need to convert it to Python list or Numpy array. You can easily do so using Python codes described below:
-`traj_to_datalist.py` : convert the trajectory dataset into a Python list, and save it as a Pickle file.
-`pickle_to_list.py` : convert the nominal dataset that visits the home configuration to a Python list, and save it as a Pickle file
+The tendon-driven robot data collection is in the form of Python dictionary where each key and value includes tendon configuration, length configuration, servo commands, and the corresponding robot shape (point clouds). To use the data collection in the model training, you need to convert it to Python list or Numpy array. You can easily do so using Python codes described below: <br />
+`traj_to_datalist.py` : convert the trajectory dataset into a Python list, and save it as a Pickle file. <br />
+`pickle_to_list.py` : convert the nominal dataset that visits the home configuration to a Python list, and save it as a Pickle file <br />
 
 For data collection for simulation, see `simulated_data_collection.py` or `pbf_data_collection.py`.
 
