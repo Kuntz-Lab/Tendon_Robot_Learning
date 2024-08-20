@@ -267,7 +267,7 @@ set(MOTION_PLANNING_HEADERS
   ${SRC_DIR}/motion-planning/VoxelBackboneMotionValidator.h
   ${SRC_DIR}/motion-planning/VoxelBackboneMotionValidatorAndLogger.h
   ${SRC_DIR}/motion-planning/VoxelBackboneValidityChecker.h
-  ${SRC_DIR}/motion-planning/VoxelCachedLazyPRM.h
+  #${SRC_DIR}/motion-planning/VoxelCachedLazyPRM.h
   ${SRC_DIR}/motion-planning/VoxelEnvironment.h
   ${SRC_DIR}/motion-planning/VoxelValidityChecker.h
   ${SRC_DIR}/motion-planning/WSpaceGoal.h
@@ -380,7 +380,7 @@ set(TENDON_SOURCE
   ${SRC_DIR}/motion-planning/VoxelBackboneMotionValidator.cpp
   ${SRC_DIR}/motion-planning/VoxelBackboneDiscreteMotionValidator.cpp
   ${SRC_DIR}/motion-planning/VoxelBackboneMotionValidatorAndLogger.cpp
-  ${SRC_DIR}/motion-planning/VoxelCachedLazyPRM.cpp
+  #${SRC_DIR}/motion-planning/VoxelCachedLazyPRM.cpp
   ${SRC_DIR}/motion-planning/VoxelEnvironment.cpp
   ${SRC_DIR}/motion-planning/ompl_planners.cpp
   ${SRC_DIR}/motion-planning/plan.cpp
