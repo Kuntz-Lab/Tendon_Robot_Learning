@@ -33,7 +33,7 @@ cd build && source /opt/ros/eloquent/setup.bash && export PYTHONPATH=$PYTHONPATH
 
 ## Training
 ```
-cd ~/git/Tendon_Robot_Learning/build && python3 learn_actual_pc.py path_to_data_file.pickle path_to_model_weight.pth path_to_test_indices.pickle --hys 1   
+python3 learn_actual_pc.py path_to_data_file.pickle path_to_model_weight.pth path_to_test_indices.pickle --hys 1   
 ```
 The positional arguments are a data file name, a weight file name, and a test dataset (consisting of indices as Numpy array). 
 To train a simulation model, see `learn_tendon_shape.py`.
