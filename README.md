@@ -16,7 +16,7 @@ Model: Intel RealSense D405 (see: https://github.com/IntelRealSense/realsense-ro
 #### Tendon-driven robot
 The robot we used in the experiment (shown red in the figure above) consists of a 3D printed, flexible thermoplastic polyurethane (TPU) material body with a thin nitinol tube embedded in the 3D printed structure with a length of 0.2 m, consisting of 9 circular disks that connect 3 straight-routed tendons at 120 degrees apart and 1 helically-routed tendon, with linear actuators pulling on the tendons to control the robot's shape at the robot's base frome.
 
-
+[/
 ## Build
 
 ```
@@ -29,6 +29,8 @@ cd build && ninja
 ```
 cd build && source /opt/ros/eloquent/setup.bash && export PYTHONPATH=$PYTHONPATH:$PWD
 ```
+/]
+
 ## Training
 ```
 cd ~/git/Tendon_Robot_Learning/build && python3 learn_actual_pc.py path_to_data_file.pickle path_to_model_weight.pth path_to_test_indices.pickle --hys 1   
