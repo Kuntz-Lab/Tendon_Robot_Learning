@@ -882,8 +882,6 @@ if (TARGET cpptendon)
   add_dependencies(gridgen cpptendon)
   add_python_script(measure_tip_poses.py)
   add_dependencies(measure_tip_poses cpptendon)
-  add_python_script(pc_learning.py)
-  add_dependencies(pc_learning cpptendon)
 endif()
 
 

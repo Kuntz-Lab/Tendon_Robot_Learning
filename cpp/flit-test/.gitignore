@@ -1,0 +1,9 @@
+Makefile
+bin/
+devrun
+devrun.csv*
+ground-truth.csv*
+gtrun
+obj/
+results.sqlite
+results/
