@@ -1,0 +1,113 @@
+FROM ros2:18.04-eloquent-ompl
+MAINTAINER mikebentley15@gmail.com
+
+# General helper utilities and development tools
+RUN apt-get -y update && \
+    apt-get -y upgrade && \
+    DEBIAN_FRONTEND=noninteractive apt-get -y install \
+      bash-completion \
+      bzr \
+      cmake-curses-gui \
+      curl \
+      gdb \
+      gitk \
+      google-mock \
+      graphviz \
+      imagemagick \
+      ipython3 \
+      lsb-release \
+      man-db \
+      mlocate \
+      moreutils \
+      ninja-build \
+      python-matplotlib \
+      python-numpy \
+      python-pygments \
+      python3-colcon-common-extensions \
+      python3-matplotlib \
+      python3-numpy \
+      python3-pyelftools \
+      python3-pygments \
+      python3-toml \
+      qtcreator \
+      ruby \
+      screen \
+      software-properties-common \
+      subversion \
+      sudo \
+      tcl-dev \
+      terminator \
+      tk-dev \
+      tmux \
+      tree \
+      vim \
+      vim-gnome \
+      wget \
+      && \
+    rm -rf /var/lib/apt/lists/*
+
+# Other needed development libraries
+# - libf2c2: dependency of levmar
+# - libfcl:  dependency of tendon library
+RUN apt-get -y update && \
+    apt-get -y upgrade && \
+    DEBIAN_FRONTEND=noninteractive apt-get -y install \
+      libboost-all-dev \
+      libeigen3-dev \
+      libf2c2-dev \
+      libfcl-dev \
+      && \
+    rm -rf /var/lib/apt/lists/*
+
+# packages from my PPA
+RUN add-apt-repository -y ppa:mikebentley15/testing && \
+    apt-get -y update && \
+    DEBIAN_FRONTEND=noninteractive apt-get -y install \
+      armlab-insighttoolkit \
+      ll4ma-ompl && \
+    rm -rf /var/lib/apt/lists/*
+
+# TODO: Visual Studio Code
+
+# Setup Google Test
+RUN apt-get -y update && \
+    DEBIAN_FRONTEND=noninteractive apt-get -y install \
+      libgtest-dev \
+      && \
+    rm -rf /var/lib/apt/lists/* && \
+    cd /usr/src/gtest && \
+    mkdir build && \
+    cd build && \
+    cmake .. -DCMAKE_BUILD_TYPE=Release && \
+    make && \
+    cp *.a /usr/lib/
+
+ARG user
+ARG user_id
+ARG user_group_id
+ARG user_shell=/bin/bash
+ARG user_home=/home/${user}
+
+# Create user with sudo access.  Sudo does not require a password
+RUN groupadd --gid ${user_group_id} sudo-nopw && \
+    useradd \
+      --home-dir ${user_home} \
+      --create-home \
+      --shell ${user_shell} \
+      --gid sudo-nopw \
+      --groups sudo \
+      --uid ${user_id} \
+      ${user} \
+      && \
+    passwd -d ${user} && \
+    echo "%sudo-nopw ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/sudo-nopw-group
+
+# Have some way to know what kind of docker container we're in
+RUN echo "ros2-dev" > /etc/docker-name
+
+USER ${user}
+WORKDIR ${user_home}
+
+# Fix rosdep
+#RUN sudo rosdep fix-permissions && \
+#    rosdep update

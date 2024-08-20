@@ -1,0 +1,17 @@
+FROM ros2:18.04-eloquent
+MAINTAINER mikebentley15@gmail.com
+
+# install add-apt-repository
+RUN apt-get -y update && \
+    DEBIAN_FRONTEND=noninteractive \
+      apt-get -y install software-properties-common && \
+    rm -rf /var/lib/apt/lists/*
+
+# install ompl package from my PPA
+RUN add-apt-repository -y ppa:mikebentley15/testing && \
+    apt-get -y update && \
+    DEBIAN_FRONTEND=noninteractive apt-get -y install ll4ma-ompl && \
+    rm -rf /var/lib/apt/lists/*
+
+# Have some way to know what kind of docker container we're in
+RUN echo "ros2-ompl" > /etc/docker-name

@@ -1,0 +1,38 @@
+max_tension = 150.0
+min_tension_change = 0.1
+#start = [50.0, 0.0, 20.0, 15.0, 0.0]
+#goal = [130.0, 0.0, 120.0, 0.0, 0.0]
+start = [50.0, 0.0, 20.0]
+goal = [130.0, 0.0, 0.0]
+[environment]
+  [[environment.meshes]]
+    filename = "/home/mbentley/git/ll4ma/tendon_experiments/resources/mike-effusion-region-instant-simplified-6k-with-hole.stl"
+[robot]
+  radius = 3e-3
+  [robot.backbone_specs]
+    E = 2.1e6
+    length = 0.07
+    length_discretization = 2e-3
+    nu = 0.3
+    ri = 0.0
+    ro = 0.01
+  [[robot.tendons]]
+    C = [0.0, 0.0]
+    D = [2.9e-3]
+    max_tension = 150.0
+  [[robot.tendons]]
+    C = [2.094, 0.0]
+    D = [2.9e-3]
+    max_tension = 150.0
+  [[robot.tendons]]
+    C = [4.189, 0.0]
+    D = [2.9e-3]
+    max_tension = 150.0
+#  [[robot.tendons]]
+#    C = [1.571, 50.0]
+#    D = [2.9e-3]
+#    max_tension = 30.0
+#  [[robot.tendons]]
+#    C = [-1.571, -50.0]
+#    D = [2.9e-3]
+#    max_tension = 30.0

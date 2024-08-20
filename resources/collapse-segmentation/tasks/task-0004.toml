@@ -1,0 +1,52 @@
+[[tendons]]
+C = [ 0, 0,]
+D = [ 0.0025,]
+max_tension = 3.5
+min_length = -0.029
+max_length = 0.048
+
+[[tendons]]
+C = [ 1.571, 50,]
+D = [ 0.0025,]
+max_tension = 3.5
+min_length = -0.027
+max_length = 0.046
+
+[[tendons]]
+C = [ -1.571, -50,]
+D = [ 0.0025,]
+max_tension = 3.5
+min_length = -0.027
+max_length = 0.046
+
+[backbone_specs]
+E = 2100000
+length = 0.12
+length_discretization = 0.00059
+nu = 0.3
+ri = 0
+ro = 0.003
+
+[problem]
+min_tension_change = 0.005
+start = [ 1.30466, 2.47896, 3.47912,]
+start_rotation = -1.34078
+start_retraction = 0.0526543
+goal = [ 1.12277, 2.36622, 3.27221,]
+goal_rotation = -1.79936
+goal_retraction = 0.0486451
+
+[environment]
+[[environment.meshes]]
+filename = "collapse-segmentation-reoriented-with-hole-3k.stl"
+
+[voxel_environment]
+filename = "collapse-segmentation-moved-with-hole.msgpack"
+scaling = 0.001
+translation = [ 108.9, 165.3, 204.2,]
+rotation_quat = [ 0.665, -0.052, 0.744, 0.035,]
+
+[tendon_robot]
+radius = 0.003
+enable_rotation = true
+enable_retraction = true
