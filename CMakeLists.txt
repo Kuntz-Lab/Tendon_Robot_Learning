@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(motion_learning LANGUAGES CXX VERSION 1.0.0)
+project(Tendon_Robot_Learning LANGUAGES CXX VERSION 1.0.0)
 
 option(TENDON_USE_OPENMP "Use OpenMP" ON)
 option(TENDON_LINK_PYTHON_SCRIPTS "Link python scripts instead of copying" ON)

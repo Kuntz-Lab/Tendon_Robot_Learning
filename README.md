@@ -21,9 +21,8 @@ The robot we used in the experiment (shown red in the figure above) consists of 
 
 ```
 mkdir build
-cd build && source /opt/ros/eloquent/setup.bash && export PYTHONPATH=$PYTHONPATH:$PWD
-cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release
-cd ~/git/Tendon_Robot_Learning/build && ninja
+cd build && cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release
+cd build && ninja
 ```
 
 ## Configure the environment
